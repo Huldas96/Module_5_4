@@ -1,6 +1,8 @@
-import express from "express";
+/* This file contains all the routes, it is very simple and clean. Very easy to read. */
 
-import { createUser, getUsers, getUser, deleteUser, updateUser } from "../controllers/users.js"
+import express from "express"; // Express, very nice.
+
+import { createUser, getUsers, getUser, deleteUser, updateUser } from "../controllers/users.js" // importing all the logic
 
 const router = express.Router();
 

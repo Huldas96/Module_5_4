@@ -1,19 +1,24 @@
-import { v4 as uuidv4 } from "uuid";
+/* This file contains all functions, all logic */
 
-let users = [];
+import { v4 as uuidv4 } from "uuid";        // UUID was a nice addition to this project, generating random id for each user
 
+let users = []; 
+
+/* This function creates a user */
 export const createUser = (req, res) => {
     const user = req.body;
 
     users.push({ ...user, id: uuidv4() });
 
-    res.send(`User with the name ${user.firstName} added to the database!`);
+    res.send(`User with the name ${user.firstName} added to the database!`); // Simple message to confirm that it worked ( very nice when working with postman )
 };
 
+/* This function shows us all the users */
 export const getUsers = (req, res) => {
     res.send(users);
 };
 
+/* This function finds a user based on its id */
 export const getUser = (req, res) => {
     const { id } = req.params;
 
@@ -22,14 +27,16 @@ export const getUser = (req, res) => {
     res.send(foundUser);
 };
 
+/* This function deletes a user based on its id */
 export const deleteUser = (req, res) => {
     const { id } = req.params;
 
     users = users.filter((user) => user.id !== id);
 
-    res.send(`User with the id ${id} deleted from the database`);
+    res.send(`User with the id ${id} deleted from the database`); // nice message to confirm 
 };
 
+/* This function updates information for a user */
 export const updateUser = (req, res) => {
     const { id } = req.params;
 
